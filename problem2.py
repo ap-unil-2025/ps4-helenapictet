@@ -5,6 +5,13 @@ Practice working with Python dictionaries - creating, accessing, modifying, and 
 
 
 def create_student_record(name, age, major, gpa):
+    return {
+    'name': str(name),
+    'age': int(age),
+    'major': major,
+    'gpa': gpa
+    }
+
     """
     Create a student record as a dictionary.
 
@@ -23,7 +30,7 @@ def create_student_record(name, age, major, gpa):
     """
     # TODO: Implement this function
     # Return a dictionary with the provided information
-    pass
+    
 
 
 def get_value_safely(dictionary, key, default=None):
