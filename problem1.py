@@ -5,6 +5,8 @@ Practice working with Python lists - creating, modifying, filtering, and transfo
 
 
 def create_number_list(start, end):
+    return list(range(start, end + 1))
+
     """
     Create a list of numbers from start to end (inclusive).
 
@@ -19,12 +21,15 @@ def create_number_list(start, end):
         >>> create_number_list(1, 5)
         [1, 2, 3, 4, 5]
     """
-    # TODO: Implement this functiotart
-    # Hint: Use range() and convert to list
-    pass
+
 
 
 def filter_even_numbers(numbers):
+    return [num for num in numbers if numbers % 2 == 0]
+
+    """
+def filter_even_numbers(numbers):
+    """
     """
     Return a new list containing only the even numbers.
 
@@ -38,12 +43,16 @@ def filter_even_numbers(numbers):
         >>> filter_even_numbers([1, 2, 3, 4, 5, 6])
         [2, 4, 6]
     """
-    # TODO: Implement this function
-    # You can use a loop or list comprehension
-    pass
+    """
+    Return a new list with each number squared.
 
+    Args:
+        numbers (list): List of numbers
 
+    """
 def square_numbers(numbers):
+    return [num ** 2 for num in numbers]
+
     """
     Return a new list with each number squared.
 
@@ -57,12 +66,14 @@ def square_numbers(numbers):
         >>> square_numbers([1, 2, 3, 4])
         [1, 4, 9, 16]
     """
-    # TODO: Implement this function
-    # Hint: Try a list comprehension!
-    pass
+    """
+    Find the maximum and minimum values in a list.
 
-
+    Args:
+        numbers (list): List of numbers
+"""
 def find_max_min(numbers):
+    return (max(numbers), min(numbers))
     """
     Find the maximum and minimum values in a list.
 
@@ -76,18 +87,21 @@ def find_max_min(numbers):
         >>> find_max_min([3, 1, 4, 1, 5, 9, 2, 6])
         (9, 1)
     """
-    # TODO: Implement this function
-    # You can use max() and min() built-in functions
-    pass
-
+    """
+    Args:
+        items (list): List that may contain duplicates
+    Returns:
+        list: List with duplicates removed
+    """
 
 def remove_duplicates(items):
+    return list(dict.fromkeys(items))
+    return merged
     """
     Remove duplicate items from a list while preserving order.
 
     Args:
         items (list): List that may contain duplicates
-
     Returns:
         list: List with duplicates removed
 
@@ -95,13 +109,26 @@ def remove_duplicates(items):
         >>> remove_duplicates([1, 2, 2, 3, 4, 3, 5])
         [1, 2, 3, 4, 5]
     """
-    # TODO: Implement this function
-    # Hint: You can use a loop and check if item is already in result list
-    # Or convert to set and back to list (but this doesn't preserve order)
-    pass
+    
 
+    """
+    Merge two lists, alternating elements from each.
+    If one list is longer, append remaining elements.
 
+    Args:
+        list1 (list): First list
+    """
 def merge_lists(list1, list2):
+    merged = []
+    max_len = max(len(list1), len(list2))
+    for i in range(max_len):
+        if i < len(list1):
+            merged.append(list1[i])
+        if i < len(list2):
+            merged.append(list2[i])
+    return merged
+        return None
+
     """
     Merge two lists, alternating elements from each.
     If one list is longer, append remaining elements.
@@ -119,9 +146,10 @@ def merge_lists(list1, list2):
         >>> merge_lists([1, 2], [10, 20, 30, 40])
         [1, 10, 2, 20, 30, 40]
     """
+
     # TODO: Implement this function
-    # Hint: Use a loop with index, handle different lengths
-    pass
+    # Calculate and return a dictionary with the statistics
+    
 
 
 def list_statistics(numbers):
@@ -140,12 +168,12 @@ def list_statistics(numbers):
     """
     if not numbers:
         return None
-
-    # TODO: Implement this function
-    # Calculate and return a dictionary with the statistics
-    pass
-
-
+    return {
+        'sum': sum(numbers),
+        'average': sum(numbers) / len(numbers),
+        'count': len(numbers),
+        'max': max(numbers),
+        'min': min(numbers)
 def chunk_list(items, chunk_size):
     """
     Split a list into chunks of specified size.
@@ -161,28 +189,7 @@ def chunk_list(items, chunk_size):
         >>> chunk_list([1, 2, 3, 4, 5, 6, 7], 3)
         [[1, 2, 3], [4, 5, 6], [7]]
     """
-    # TODO: Implement this function
-    # Hint: Use list slicing in a loop
-    pass
-
-
-# Test cases
-if __name__ == "__main__":
-    print("Testing List Operations...")
-    print("-" * 50)
-
-    # Test create_number_list
-    print("Test 1: create_number_list(1, 5)")
-    result = create_number_list(1, 5)
-    print(f"Result: {result}")
-    assert result == [1, 2, 3, 4, 5], "Failed!"
-    print("✓ Passed\n")
-
-    # Test filter_even_numbers
-    print("Test 2: filter_even_numbers([1, 2, 3, 4, 5, 6])")
-    result = filter_even_numbers([1, 2, 3, 4, 5, 6])
-    print(f"Result: {result}")
-    assert result == [2, 4, 6], "Failed!"
+    return [items[i:i + chunk_size] for i in range(0, len(items), chunk_size)]
     print("✓ Passed\n")
 
     # Test square_numbers
