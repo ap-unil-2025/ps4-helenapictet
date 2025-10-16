@@ -11,11 +11,10 @@ Every recursive function needs:
 
 def factorial(n):
     n = int(n)
-    for n in range(1,n+1):
-        if n <= 0:
-            return 1
-        else: 
-            return n * factorial(n-1)
+    if n <= 1:
+        return 1
+    else: 
+        return n * factorial(n-1)
     """
     Calculate factorial of n using recursion.
     n! = n × (n-1) × (n-2) × ... × 1
@@ -37,14 +36,14 @@ def factorial(n):
     # Base case: if n is 0 or 1, return 1
     # Recursive case: return n * factorial(n-1)
 
-    # Hint:
-    # if n <= 1:
-    #     return 1
-    # return n * factorial(n - 1)
-    
-
-
 def countdown(n):
+    n = int(n)
+    if n <= 0: 
+        print("BLastoff!")
+    else:
+        print(n)
+        countdown(n-1)
+
     """
     Print numbers from n down to 1 using recursion.
 
@@ -63,7 +62,7 @@ def countdown(n):
     # TODO: Implement this function recursively
     # Base case: if n is 0, print "Blastoff!" and return
     # Recursive case: print n, then call countdown(n-1)
-    pass
+
 
 
 def sum_list(numbers):
@@ -80,18 +79,19 @@ def sum_list(numbers):
         >>> sum_list([1, 2, 3, 4, 5])
         15
     """
-    # TODO: Implement this function recursively
-    # Base case: if list is empty, return 0
-    # Recursive case: return first element + sum_list(rest of list)
-
-    # Hint:
-    # if not numbers:  # empty list
-    #     return 0
-    # return numbers[0] + sum_list(numbers[1:])
-    pass
+    if not numbers:
+        return 0
+    return float(numbers[0]) + float(sum_list(numbers[1:]))
+    
 
 
 def fibonacci(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
     """
     Calculate nth Fibonacci number using recursion.
     Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13, ...
@@ -114,10 +114,14 @@ def fibonacci(n):
     # TODO: Implement this function recursively
     # Base cases: if n is 0, return 0; if n is 1, return 1
     # Recursive case: return fibonacci(n-1) + fibonacci(n-2)
-    pass
+
 
 
 def power(base, exponent):
+    if exponent == 0:
+        return 1
+    else: 
+        return base * power(base, exponent-1)
     """
     Calculate base^exponent using recursion.
 
@@ -137,10 +141,15 @@ def power(base, exponent):
     # TODO: Implement this function recursively
     # Base case: if exponent is 0, return 1
     # Recursive case: return base * power(base, exponent-1)
-    pass
+
 
 
 def reverse_string(text):
+    if len(text) <= 1:
+        return text
+    return str(text[-1]) + str(reverse_string(text[:-1]))
+
+
     """
     Reverse a string using recursion.
 
@@ -162,10 +171,15 @@ def reverse_string(text):
     # if len(text) <= 1:
     #     return text
     # return text[-1] + reverse_string(text[:-1])
-    pass
 
 
 def count_down_list(n):
+    n = int(n)
+    if n <= 0:
+        return []
+    else: 
+        return [n] + count_down_list(n-1)
+
     """
     Create a list of numbers from n down to 1 using recursion.
 
@@ -182,10 +196,19 @@ def count_down_list(n):
     # TODO: Implement this function recursively
     # Base case: if n is 0, return empty list
     # Recursive case: return [n] + count_down_list(n-1)
-    pass
+
 
 
 def flatten_list(nested_list):
+    if not nested_list:
+        return []
+    result = []
+    for item in nested_list:
+        if isinstance(item, list):
+            result.extend(flatten_list(item))
+        else:
+            result.append(item)
+    return result
     """
     Flatten a nested list using recursion.
 
@@ -213,7 +236,7 @@ def flatten_list(nested_list):
     #     else:
     #         result.append(item)
     # return result
-    pass
+
 
 
 # Test cases
